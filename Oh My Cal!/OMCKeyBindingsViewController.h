@@ -32,54 +32,14 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
-#import "OMCBinaryAndDecimalConversion.h"
+#import "MASPreferencesViewController.h"
 
-// Notification names
-NSString extern* const OMCBinaryStringDidChanged;
+// OMCKeyBindingsViewController
+@interface OMCKeyBindingsViewController : NSViewController <MASPreferencesViewController>
 
-@class OMCProgrammerStyleCalculation;
-@class FBKVOController;
++ ( instancetype ) keyBindingsViewController;
 
-// OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
-    {
-@private
-    NSUInteger      _currentResultVal;
-    NSString*       _binaryInString;
-
-    NSArray*        _rectsTheTopLevelBitsOccupied;
-    NSArray*        _rectsTheBottomLevelBitsOccupied;
-
-    NSColor*        _bitColor;
-    NSFont*         _bitFont;
-
-    NSColor*        _anchorColor;
-    NSFont*         _anchorFont;
-
-    NSSize          _bitSize;
-    NSSize          _anchorSize;
-    }
-
-@property ( nonatomic, retain ) FBKVOController* KVOController;
-
-@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
-
-@property ( nonatomic, assign ) NSUInteger currentResultVal;
-@property ( nonatomic, copy ) NSString* binaryInString;
-
-@property ( nonatomic, copy ) NSArray* rectsTheTopLevelBitsOccupied;
-@property ( nonatomic, copy ) NSArray* rectsTheBottomLevelBitsOccupied;
-
-@property ( nonatomic, retain ) NSColor* bitColor;
-@property ( nonatomic, retain ) NSFont* bitFont;
-
-@property ( nonatomic, retain ) NSColor* anchorColor;
-@property ( nonatomic, retain ) NSFont* anchorFont;
-
-@property ( nonatomic, assign ) NSSize bitSize;
-@property ( nonatomic, assign ) NSSize anchorSize;
-
-@end // OMCBinaryOperationPanel class
+@end // OMCKeyBindingsViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

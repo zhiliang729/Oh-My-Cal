@@ -33,17 +33,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-// OMFAboutPanelController class
-@interface OMFAboutPanelController : NSWindowController
-
-+ ( id ) aboutPanelController;
+@interface OMCAboutView : NSView
 
 #pragma mark Actions
 - ( IBAction ) emailMe: ( id )_Sender;
 - ( IBAction ) followMeOnTwitter: ( id )_Sender;
+- ( IBAction ) forkThisRepoOnGitHub: ( id )_Sender;
 - ( IBAction ) importMyGnuPGPubKey: ( id )_Sender;
 
-@end // OMFAboutPanelController
+@end // OMCAboutView
 
 //////////////////////////////////////////////////////////////////////////////
 

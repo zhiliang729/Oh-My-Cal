@@ -55,8 +55,14 @@
 #define USER_DEFAULTS  [ NSUserDefaults standardUserDefaults ]
 #define NOTIFICATION_CENTER [ NSNotificationCenter defaultCenter ]
 
+#define GENERAL_PASTEBOARD [ NSPasteboard generalPasteboard ]
+
 #define FLAT    0
 #define TEXTURE !FLAT
+
+#define RELEASE_AND_NIL( _Object )  \
+    [ _Object release ];            \
+    _Object = nil                   \
 
 // User Defaults Keys
 #define OMCDefaultsKeyCalStyle                      @"OMCDefaultsKeyCalStyle"

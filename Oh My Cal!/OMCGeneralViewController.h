@@ -31,54 +31,15 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFAboutPanelController.h"
+#import <Cocoa/Cocoa.h>
+#import "MASPreferencesViewController.h"
 
-// OMFAboutPanelController class
-@implementation OMFAboutPanelController
+// OMCGeneralViewController
+@interface OMCGeneralViewController : NSViewController <MASPreferencesViewController>
 
-#pragma mark Initializers
-+ ( id ) aboutPanelController
-    {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
-    }
++ ( instancetype ) generalViewController;
 
-- ( id ) init
-    {
-    if ( self = [ super initWithWindowNibName: @"OMFAboutPanel" ] )
-        {
-        // TODO:
-        }
-
-    return self;
-    }
-
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    // TODO:
-    }
-
-#pragma mark Actions
-- ( IBAction ) emailMe: ( id )_Sender
-    {
-    NSURL* emailURL = [ NSURL URLWithString: @"mailto:Tong-G@outlook.com"
-                                              "?subject=Hey,%20Tong%20Guo!" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: emailURL ];
-    }
-
-- ( IBAction ) followMeOnTwitter: ( id )_Sender
-    {
-    NSURL* twitterURL = [ NSURL URLWithString: @"https://twitter.com/NSTongG" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
-    }
-
-- ( IBAction ) importMyGnuPGPubKey: ( id )_Sender
-    {
-    NSURL* pubkeyFileURL = [ [ NSBundle mainBundle ] URLForResource: @"pubkey" withExtension: @"txt" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: pubkeyFileURL ];
-    }
-
-@end // OMFAboutPanelController
+@end // OMCGeneralViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

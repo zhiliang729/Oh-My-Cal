@@ -31,6 +31,7 @@
  **                                                                         **
  ****************************************************************************/
 
+#import <Carbon/Carbon.h>
 #import "OMFPanelBackgroundView.h"
 
 #import "OMCLCDScreen.h"
@@ -43,6 +44,8 @@
 #import "OMCCalWithBasicStyle.h"
 #import "OMCCalWithScientificStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
+
+#import <FBKVOController/NSObject+FBKVOController.h>
 
 NSInteger static const kSpaceBarsCount = 4;
 
@@ -58,6 +61,8 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     NSRect _LCDBoundary;
     NSRect _gridPathBoundary;
     }
+
+@synthesize KVOController = _KVOController;
 
 @synthesize _mainPanelBackgroundView;
 
@@ -108,6 +113,11 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     return YES;
     }
 
+- ( BOOL ) resignFirstResponder
+    {
+    return NO;
+    }
+
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
@@ -123,53 +133,34 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     self.storageFormulasFont = self.operandsFont;   // Same as the font for operands
     self.statusFont = [ NSFont fontWithName: @"Lucida Grande" size: 10 ];
 
+    self.KVOController = [ FBKVOController controllerWithObserver: self ];
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._scientificStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
     }
 
-- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
-                         ofObject: ( id )_Object
-                           change: ( NSDictionary* )_Change
-                           context: ( void* )_Context
-    {
-    if ( [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathForTypingStateInCalculations ] )
-        [ self setNeedsDisplay: YES ];
-
-    else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
-                /* || [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ] */
-                || [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculations ] )
-        [ self setNeedsDisplayInRect: self.statusSpaceBar ];
-    }
-
 - ( void ) _addObserverForCalculations: ( OMCCalculation* )_Calculation
     {
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForTrigonometircModeInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
+    [ self.KVOController observe: _Calculation
+                        keyPaths: @[ kKeyPathForTrigonometircModeInCalculations
+                                   , kKeyPathForHasMemoryInCalculations
+                                   , kKeyPathForCurrentAryInCalculations
+                                   , kKeyPathForTypingStateInCalculations
+                                   , kKeyPathForIsInShiftInCalculations ]
+                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                           block:
+        ^( NSString* _KeyPath, OMCLCDScreen* _Observer, OMCCalculation* _ObservedObject, NSDictionary* _Change )
+            {
+            if ( [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ]
+                        || [ _KeyPath isEqualToString: kKeyPathForTypingStateInCalculations ] )
+                [ self setNeedsDisplay: YES ];
 
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForHasMemoryInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForCurrentAryInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForTypingStateInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForIsInShiftInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
+            else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
+                        || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
+                        /* || [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ] */
+                        || [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculations ] )
+                [ self setNeedsDisplayInRect: self.statusSpaceBar ];
+            } ];
     }
 
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
@@ -557,6 +548,8 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 #pragma mark Events Handling
 - ( void ) keyDown: ( NSEvent* )_Event
     {
+    unsigned short keyCodeOfTheEvent = [ _Event keyCode ];
+
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];
 
@@ -631,21 +624,21 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 
     else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xF;
-    // FF: ⌥-F
+    // FF: ⌥F
     else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xFF;
 
-    // AND: ⌘-A
+    // AND: ⌘A
     else if ( COMPARE_WITH_CHARACTERS( @"A" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._andOperator;
-    // OR: ⌘-O
+    // OR: ⌘O
     else if ( COMPARE_WITH_CHARACTERS( @"O" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._orOperator;
-    // NOR: ⌘-N
+    // NOR: ⌘N
     else if ( COMPARE_WITH_CHARACTERS( @"N" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._norOperator;
-    // XOR: ⌘-X
-    else if ( COMPARE_WITH_CHARACTERS( @"X" ) && ( modifierFlags & NSCommandKeyMask ) )
+    // XOR: ⌘⇧X
+    else if ( COMPARE_WITH_CHARACTERS( @"X" ) && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self._calWithProgrammerStyle._xorOperator;
 
     // RoL
@@ -654,29 +647,33 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     // RoR
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rorOperator;
-    // Lsh: ⌘-L
+    // Lsh: ⌘L
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"L" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._lshOperator;
-    // Rsh: ⌘-R
+    // Rsh: ⌘R
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rshOperator;
 
-    // Mod: ⌘-M
+    // Mod: ⌘M
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
 
-    // DEL: Delete
-    else if ( _Event.keyCode == 51 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+    // DEL: ⌫
+    else if ( ( keyCodeOfTheEvent == kVK_Delete || keyCodeOfTheEvent == kVK_ForwardDelete )
+                && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._del;
-    // Clear: ⌘-Delete
-    else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+    // Clear: ⌘⌫
+    else if ( ( keyCodeOfTheEvent == kVK_Delete  && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+                || keyCodeOfTheEvent == kVK_ANSI_KeypadClear /* kVK_ANSI_K */)
         actionSender = self.currentCalculator._clear;
-    // Clear All: ⌘-⇧-Delete
-    else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
+
+    // Clear All: ⌘⇧⌫
+    else if ( keyCodeOfTheEvent == kVK_Delete && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._clearAll;
 
-    // Enter: Return
-    else if ( _Event.keyCode == 36 )    actionSender = self.currentCalculator._enterOperator;
+    // Enter: ↵
+    else if ( keyCodeOfTheEvent == kVK_Return || keyCodeOfTheEvent == kVK_ANSI_KeypadEnter || keyCodeOfTheEvent == kVK_ANSI_KeypadEquals /* kVK_ANSI_Q */)
+        actionSender = self.currentCalculator._enterOperator;
 
     if ( actionSender )
         {
@@ -748,7 +745,107 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
     }
 
+#pragma mark IBActions
+- ( IBAction ) cut: ( id )_Sender
+    {
+    [ self copy: _Sender ];
+
+    OMCTypingState currentTypingState = [ self typingState ];
+    if ( currentTypingState == OMCWaitAllOperands )
+        {
+        [ self.currentCalculation.lhsOperand zeroed ];
+        self.currentCalculation.typingState = OMCWaitAllOperands;
+        }
+    else if ( currentTypingState == OMCWaitRhsOperand )
+        {
+        [ self.currentCalculation.rhsOperand zeroed ];
+        self.currentCalculation.typingState = OMCWaitRhsOperand;
+        }
+    else if ( currentTypingState == OMCFinishedTyping )
+        {
+        [ self.currentCalculation clearAllAndReset ];
+        self.currentCalculation.typingState = OMCWaitAllOperands;
+        }
+    }
+
+- ( IBAction ) copy: ( id )_Sender
+    {
+    OMCTypingState currentTypingState = [ self typingState ];
+    OMCOperand* operandToBeCopied = nil;
+
+    if ( currentTypingState == OMCWaitAllOperands )
+        operandToBeCopied = [ [ self currentCalculation ] lhsOperand ];
+    else if ( currentTypingState == OMCWaitRhsOperand )
+        operandToBeCopied = [ [ self currentCalculation ] rhsOperand ];
+    else if ( currentTypingState == OMCFinishedTyping )
+        operandToBeCopied = [ [ self currentCalculation ] resultValue ];
+
+    [ operandToBeCopied writeToPasteboard: GENERAL_PASTEBOARD ];
+    }
+
+- ( IBAction ) paste: ( id )_Sender
+    {
+    NSArray* classes = @[ [ OMCOperand class ] ];
+    NSDictionary* readingOptions = [ NSDictionary dictionary ];
+    OMCTypingState currentTypingState = [ self typingState ];
+
+    if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: readingOptions ] )
+        {
+        OMCOperand* operandFromPboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: readingOptions ].firstObject;
+
+        /* The calStyle and currentAry in operandFromPboard may be out of date:
+         * current calStyle and currentAry properties may be changed after this operand was archived */
+        [ operandFromPboard setCalStyle: self.currentCalculation.calStyle ];
+        [ operandFromPboard setCurrentAry: self.currentAry ];
+
+        if ( currentTypingState == OMCWaitAllOperands )
+            {
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        else if ( currentTypingState == OMCWaitRhsOperand )
+            {
+            self.currentCalculation.rhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitRhsOperand;
+            }
+        else if ( currentTypingState == OMCFinishedTyping )
+            {
+            [ self.currentCalculation clearAllAndReset ];
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        }
+    }
+
 @end // OMCLCDScreen class
+
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@implementation OMCLCDScreen ( OMCLCDScreenValidation )
+
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated
+    {
+    if ( [ _TheItemToBeValidated action ] == @selector( paste: ) )
+        {
+        NSArray* classes = @[ [ OMCOperand class ] ];
+        NSDictionary* options = [ NSDictionary dictionary ];
+        if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: options ] )
+            {
+            OMCOperand* theOperandOnPasteboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: options ].firstObject;
+
+            if ( !theOperandOnPasteboard || [ theOperandOnPasteboard isNaN ] )
+                return NO;
+            }
+        else
+            return NO;
+        }
+
+    return YES;
+
+    /* The Super class of OMCLCDScreen doesn't conform to <NSUserInterfaceValidations> protocol
+     * so there is no necessary to forward this method to super */
+    }
+
+@end // OMCLCDScreen + OMCLCDScreenValidation
 
 //////////////////////////////////////////////////////////////////////////////
 

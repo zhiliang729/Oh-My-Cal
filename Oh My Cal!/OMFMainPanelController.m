@@ -34,15 +34,27 @@
 #import "OMFMainPanelController.h"
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
-#import "OMFAboutPanelController.h"
+
+#import "MASPreferencesWindowController.h"
+    #import "OMCGeneralViewController.h"
+    #import "OMCKeyBindingsViewController.h"
+    #import "OMCAboutViewController.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
+    {
+    struct
+        { /* Cache the infomation identified does the self.delegate implement the methods
+           * in OMFMainPanelControllerDelegate protocol */
+        unsigned short canFetchTheStatusItemForPanelController : 1;
+        } _delegateFlags;
+    }
 
 @synthesize delegate = _delegate;
 
 @synthesize backgrondView = _backgroundView;
-@synthesize aboutPanelController;
+
+@dynamic preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
@@ -84,13 +96,18 @@
 #pragma mark Panel Handling
 - ( NSRect ) frameBasedOnFrameOfStatusItemView: ( NSRect )_Frame
     {
-    NSRect frameOfStatusItemView = [ [ self.delegate statusItemViewForPanelController: self ] globalRect ];
-
     NSRect newFrame = _Frame;
-    NSPoint newOrigin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( _Frame ) / 2
-                                , NSMinY( frameOfStatusItemView ) - NSHeight( _Frame )
-                                );
-    newFrame.origin = newOrigin;
+
+    if ( self->_delegateFlags.canFetchTheStatusItemForPanelController )
+        {
+        NSRect frameOfStatusItemView = [ [ self.delegate statusItemViewForPanelController: self ] globalRect ];
+
+        NSPoint newOrigin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( _Frame ) / 2
+                                    , NSMinY( frameOfStatusItemView ) - NSHeight( _Frame )
+                                    );
+        newFrame.origin = newOrigin;
+        }
+
     return newFrame;
     }
 
@@ -139,6 +156,31 @@
         }
     }
 
+- ( void ) setDelegate:( id <OMFMainPanelControllerDelegate> )_Delegate
+    {
+    _delegate = _Delegate;
+
+    _delegateFlags.canFetchTheStatusItemForPanelController =
+        [ self.delegate respondsToSelector: @selector( statusItemViewForPanelController: ) ];
+    }
+
+MASPreferencesWindowController static* sPreferencesPanelController = nil;
+- ( MASPreferencesWindowController* ) preferencesPanelController
+    {
+    if ( !sPreferencesPanelController )
+        {
+        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
+        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
+        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
+
+        sPreferencesPanelController =
+            [ [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers:
+                    @[ generalViewController, keyBindingsController, [ NSNull null ], aboutViewController ] ] retain ];
+        }
+
+    return sPreferencesPanelController;
+    }
+
 #pragma mark Conforms <NSWindowDelegate> protocol
 - ( void ) windowDidResize: ( NSNotification* )_Notif
     {
@@ -152,27 +194,33 @@
 
 - ( void ) _fuckPanel: ( BOOL )_IsHighlighting
     {
-    OMFStatusItemView* statusItemView = [ self.delegate statusItemViewForPanelController: self ];
+    if ( self->_delegateFlags.canFetchTheStatusItemForPanelController )
+        {
+        OMFStatusItemView* statusItemView = [ self.delegate statusItemViewForPanelController: self ];
 
-    if ( _IsHighlighting )
-        {
-        [ statusItemView setHighlighting: YES ];
-        [ self openPanelWithMode: OMCHangInMenuMode ];
-        }
-    else
-        {
-        [ statusItemView setHighlighting: NO ];
-        [ self closePanel ];
+        if ( _IsHighlighting )
+            {
+            [ statusItemView setHighlighting: YES ];
+            [ self openPanelWithMode: OMCHangInMenuMode ];
+            }
+        else
+            {
+            [ statusItemView setHighlighting: NO ];
+            [ self closePanel ];
+            }
         }
     }
 
 #pragma mark IBActions
+- ( IBAction ) showPreferences: ( id )_Sender
+    {
+    [ self.preferencesPanelController showWindow: self ];
+    }
+
 - ( IBAction ) about: ( id )_Sender
     {
-    if ( !self.aboutPanelController )
-        self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
-
-    [ self.aboutPanelController showWindow: self ];
+    [ self.preferencesPanelController selectControllerAtIndex: 3 ];
+    [ self.preferencesPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController

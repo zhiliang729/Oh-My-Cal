@@ -31,55 +31,41 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "OMCBinaryAndDecimalConversion.h"
+#import "OMCAboutViewController.h"
 
-// Notification names
-NSString extern* const OMCBinaryStringDidChanged;
+// OMCAboutViewController class
+@implementation OMCAboutViewController
 
-@class OMCProgrammerStyleCalculation;
-@class FBKVOController;
-
-// OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
++ ( instancetype ) aboutViewController
     {
-@private
-    NSUInteger      _currentResultVal;
-    NSString*       _binaryInString;
-
-    NSArray*        _rectsTheTopLevelBitsOccupied;
-    NSArray*        _rectsTheBottomLevelBitsOccupied;
-
-    NSColor*        _bitColor;
-    NSFont*         _bitFont;
-
-    NSColor*        _anchorColor;
-    NSFont*         _anchorFont;
-
-    NSSize          _bitSize;
-    NSSize          _anchorSize;
+    return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
-@property ( nonatomic, retain ) FBKVOController* KVOController;
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"OMCAboutView" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
-@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
+    return self;
+    }
 
-@property ( nonatomic, assign ) NSUInteger currentResultVal;
-@property ( nonatomic, copy ) NSString* binaryInString;
+#pragma mark PreferencesViewController Behaviors
+- ( NSString* ) identifier
+    {
+    return @"OMCAboutView";
+    }
 
-@property ( nonatomic, copy ) NSArray* rectsTheTopLevelBitsOccupied;
-@property ( nonatomic, copy ) NSArray* rectsTheBottomLevelBitsOccupied;
+- ( NSImage* ) toolbarItemImage
+    {
+    return [ NSImage imageNamed: NSImageNameInfo ];
+    }
 
-@property ( nonatomic, retain ) NSColor* bitColor;
-@property ( nonatomic, retain ) NSFont* bitFont;
+- ( NSString* ) toolbarItemLabel
+    {
+    return NSLocalizedString( @"About", @"Toolbar item name for the About preference pane" );
+    }
 
-@property ( nonatomic, retain ) NSColor* anchorColor;
-@property ( nonatomic, retain ) NSFont* anchorFont;
-
-@property ( nonatomic, assign ) NSSize bitSize;
-@property ( nonatomic, assign ) NSSize anchorSize;
-
-@end // OMCBinaryOperationPanel class
+@end // OMCAboutViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

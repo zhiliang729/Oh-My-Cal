@@ -45,6 +45,8 @@
 @class OMCCalWithScientificStyle;
 @class OMCCalWithProgrammerStyle;
 
+@class FBKVOController;
+
 typedef NSRect OMCSpaceBarRect;
 
 // OMCLCDScreen class
@@ -72,6 +74,8 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _storageFormulasFont;
     NSFont* _statusFont;
     }
+
+@property ( nonatomic, retain ) FBKVOController* KVOController;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
 
@@ -111,7 +115,17 @@ typedef NSRect OMCSpaceBarRect;
 
 @property ( nonatomic, retain, readonly ) OMCCalculation* currentCalculation;
 
+#pragma mark IBActions
+- ( IBAction ) cut: ( id )_Sender;
+- ( IBAction ) copy: ( id )_Sender;
+- ( IBAction ) paste: ( id )_Sender;
+
 @end // OMCLCDScreen
+
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@interface OMCLCDScreen ( OMCLCDScreenValidation ) <NSUserInterfaceValidations>
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated;
+@end // OMCLCDScreen + OMCLCDScreenValidation
 
 //////////////////////////////////////////////////////////////////////////////
 

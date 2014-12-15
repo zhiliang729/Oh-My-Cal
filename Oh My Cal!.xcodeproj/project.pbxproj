@@ -35,11 +35,26 @@
 		83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9119ADBB2E00DDBF1D /* BGHUDView.m */; };
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
+		8310B0181A0215F700ED8EB0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0101A0215F700ED8EB0 /* .gitignore */; };
+		8310B0191A0215F700ED8EB0 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0111A0215F700ED8EB0 /* LICENSE.md */; };
+		8310B01A1A0215F700ED8EB0 /* MASPreferences.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */; };
+		8310B01B1A0215F700ED8EB0 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */; };
+		8310B01C1A0215F700ED8EB0 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */; };
+		8310B01D1A0215F700ED8EB0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0171A0215F700ED8EB0 /* README.md */; };
+		8310B0201A022E7900ED8EB0 /* OMCAboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B01F1A022E7900ED8EB0 /* OMCAboutView.xib */; };
+		8310B0231A022EB400ED8EB0 /* OMCAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */; };
+		8310B0251A023BB200ED8EB0 /* OMCGeneralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */; };
+		8310B0281A023BCE00ED8EB0 /* OMCGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */; };
+		8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */; };
+		8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */; };
+		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
 		832A8C8219D90BCD005DB2A7 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8019D90BCD005DB2A7 /* email.png */; };
 		832A8C8419D90E0B005DB2A7 /* gnupg.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8319D90E0B005DB2A7 /* gnupg.png */; };
 		832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8719D914CD005DB2A7 /* pubkey.txt */; };
+		833A60F21A1B59C7009C8ED5 /* FBKVOController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 833A60F11A1B59C7009C8ED5 /* FBKVOController.framework */; };
+		833A60F31A1B59D9009C8ED5 /* FBKVOController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 833A60F11A1B59C7009C8ED5 /* FBKVOController.framework */; };
 		833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */; };
 		833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645419AF2FBE001C7C35 /* OMCCalculation.m */; };
 		8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8351EF2919D113ED00D5FD7D /* NSString+OMCString.m */; };
@@ -68,9 +83,7 @@
 		83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52B19ADB85A004AFD84 /* OMFPanelBackgroundView.m */; };
 		83D5D53619ADB8C7004AFD84 /* OMFStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */; };
 		83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */; };
-		83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */; };
-		83D5D54219ADB8FF004AFD84 /* OMFAboutPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */; };
-		83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */; };
+		83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMCAboutView.m */; };
 		83DD4A1219B1B0B2007F530A /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DD4A1119B1B0B2007F530A /* settings.png */; };
 		83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */; };
 		83DD4A1819B1F8CA007F530A /* NSMutableString+OMCMutableString.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */; };
@@ -95,6 +108,19 @@
 			remoteInfo = "Oh My Cal!";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8340B88B1A18DDDA0008DB3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				833A60F31A1B59D9009C8ED5 /* FBKVOController.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		83099C5C19ADBB2E00DDBF1D /* BGGradientTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGradientTheme.h; sourceTree = "<group>"; };
@@ -157,12 +183,31 @@
 		83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGThemeManager.m; sourceTree = "<group>"; };
 		83099C9619ADBB2E00DDBF1D /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
+		8310B0101A0215F700ED8EB0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8310B0111A0215F700ED8EB0 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
+		8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASPreferences.podspec; sourceTree = "<group>"; };
+		8310B0131A0215F700ED8EB0 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		8310B0151A0215F700ED8EB0 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		8310B0171A0215F700ED8EB0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		8310B01F1A022E7900ED8EB0 /* OMCAboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMCAboutView.xib; path = "Oh My Cal!/OMCAboutView.xib"; sourceTree = "<group>"; };
+		8310B0211A022EB400ED8EB0 /* OMCAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCAboutViewController.h; path = "Oh My Cal!/OMCAboutViewController.h"; sourceTree = "<group>"; };
+		8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCAboutViewController.m; path = "Oh My Cal!/OMCAboutViewController.m"; sourceTree = "<group>"; };
+		8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMCGeneralView.xib; path = "Oh My Cal!/OMCGeneralView.xib"; sourceTree = "<group>"; };
+		8310B0261A023BCE00ED8EB0 /* OMCGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCGeneralViewController.h; path = "Oh My Cal!/OMCGeneralViewController.h"; sourceTree = "<group>"; };
+		8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCGeneralViewController.m; path = "Oh My Cal!/OMCGeneralViewController.m"; sourceTree = "<group>"; };
+		8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OMCKeyBindingsView.xib; sourceTree = "<group>"; };
+		8310B02B1A023FD100ED8EB0 /* OMCKeyBindingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCKeyBindingsViewController.h; path = "Oh My Cal!/OMCKeyBindingsViewController.h"; sourceTree = "<group>"; };
+		8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCKeyBindingsViewController.m; path = "Oh My Cal!/OMCKeyBindingsViewController.m"; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
+		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		832A8C7F19D90BCD005DB2A7 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = "Oh My Cal!/Resources/twitter.png"; sourceTree = "<group>"; };
 		832A8C8019D90BCD005DB2A7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "Oh My Cal!/Resources/email.png"; sourceTree = "<group>"; };
 		832A8C8319D90E0B005DB2A7 /* gnupg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gnupg.png; path = "Oh My Cal!/Resources/gnupg.png"; sourceTree = "<group>"; };
 		832A8C8719D914CD005DB2A7 /* pubkey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubkey.txt; path = "Oh My Cal!/Resources/pubkey.txt"; sourceTree = "<group>"; };
+		833A60F11A1B59C7009C8ED5 /* FBKVOController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBKVOController.framework; sourceTree = "<group>"; };
 		833F644F19AF03BB001C7C35 /* OMCBinaryOperationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryOperationBox.h; path = "Oh My Cal!/OMCBinaryOperationBox.h"; sourceTree = "<group>"; };
 		833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCBinaryOperationBox.m; path = "Oh My Cal!/OMCBinaryOperationBox.m"; sourceTree = "<group>"; };
 		833F645319AF2FBE001C7C35 /* OMCCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalculation.h; path = "Oh My Cal!/OMCCalculation.h"; sourceTree = "<group>"; };
@@ -213,11 +258,8 @@
 		83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusItemView.m; path = "Oh My Cal!/OMFStatusItemView.m"; sourceTree = "<group>"; };
 		83D5D53419ADB8C7004AFD84 /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Cal!/OMFStatusBarController.h"; sourceTree = "<group>"; };
 		83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Cal!/OMFStatusBarController.m"; sourceTree = "<group>"; };
-		83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFAboutPanel.xib; path = "Oh My Cal!/OMFAboutPanel.xib"; sourceTree = "<group>"; };
-		83D5D53D19ADB8FF004AFD84 /* OMFAboutPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFAboutPanelController.h; path = "Oh My Cal!/OMFAboutPanelController.h"; sourceTree = "<group>"; };
-		83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFAboutPanelController.m; path = "Oh My Cal!/OMFAboutPanelController.m"; sourceTree = "<group>"; };
-		83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFContentViewOfAboutPanel.h; path = "Oh My Cal!/OMFContentViewOfAboutPanel.h"; sourceTree = "<group>"; };
-		83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFContentViewOfAboutPanel.m; path = "Oh My Cal!/OMFContentViewOfAboutPanel.m"; sourceTree = "<group>"; };
+		83D5D53F19ADB8FF004AFD84 /* OMCAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCAboutView.h; path = "Oh My Cal!/OMCAboutView.h"; sourceTree = "<group>"; };
+		83D5D54319ADB91B004AFD84 /* OMCAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCAboutView.m; path = "Oh My Cal!/OMCAboutView.m"; sourceTree = "<group>"; };
 		83DD4A1119B1B0B2007F530A /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "Oh My Cal!/Resources/settings.png"; sourceTree = "<group>"; };
 		83DD4A1319B1B11A007F530A /* OMCSettingsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCSettingsBar.h; path = "Oh My Cal!/OMCSettingsBar.h"; sourceTree = "<group>"; };
 		83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCSettingsBar.m; path = "Oh My Cal!/OMCSettingsBar.m"; sourceTree = "<group>"; };
@@ -246,8 +288,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */,
+				833A60F21A1B59C7009C8ED5 /* FBKVOController.framework in Frameworks */,
 				83DE176919DABC2F00D38667 /* Carbon.framework in Frameworks */,
+				83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */,
 				83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +375,29 @@
 			path = "Oh My Cal!/BGHUDAppKit";
 			sourceTree = "<group>";
 		};
+		8310B00F1A0215F700ED8EB0 /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				8310B01E1A021BB900ED8EB0 /* Resoureces */,
+				8310B0131A0215F700ED8EB0 /* MASPreferencesViewController.h */,
+				8310B0151A0215F700ED8EB0 /* MASPreferencesWindowController.h */,
+				8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */,
+				8310B0111A0215F700ED8EB0 /* LICENSE.md */,
+				8310B0171A0215F700ED8EB0 /* README.md */,
+				8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */,
+				8310B0101A0215F700ED8EB0 /* .gitignore */,
+			);
+			path = MASPreferences;
+			sourceTree = SOURCE_ROOT;
+		};
+		8310B01E1A021BB900ED8EB0 /* Resoureces */ = {
+			isa = PBXGroup;
+			children = (
+				8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */,
+			);
+			name = Resoureces;
+			sourceTree = "<group>";
+		};
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +452,7 @@
 				83D5D52119ADB46E004AFD84 /* Status Bar */,
 				83D5D4CA19ADB172004AFD84 /* Whole App */,
 				83D5D51D19ADB3F3004AFD84 /* Other Panels */,
+				8310B00F1A0215F700ED8EB0 /* MASPreferences */,
 				83D5D4CB19ADB172004AFD84 /* Supporting Files */,
 				83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */,
 				83D5D4C319ADB172004AFD84 /* Frameworks */,
@@ -407,6 +474,7 @@
 		83D5D4C319ADB172004AFD84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				833A60F11A1B59C7009C8ED5 /* FBKVOController.framework */,
 				83A9BE2319DE448B001511C9 /* ServiceManagement.framework */,
 				83DE176819DABC2F00D38667 /* Carbon.framework */,
 				83D5D4C419ADB172004AFD84 /* Cocoa.framework */,
@@ -484,10 +552,14 @@
 			isa = PBXGroup;
 			children = (
 				83D5D51E19ADB3FC004AFD84 /* Resources */,
-				83D5D53D19ADB8FF004AFD84 /* OMFAboutPanelController.h */,
-				83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */,
-				83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */,
-				83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */,
+				83D5D53F19ADB8FF004AFD84 /* OMCAboutView.h */,
+				83D5D54319ADB91B004AFD84 /* OMCAboutView.m */,
+				8310B0261A023BCE00ED8EB0 /* OMCGeneralViewController.h */,
+				8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */,
+				8310B02B1A023FD100ED8EB0 /* OMCKeyBindingsViewController.h */,
+				8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */,
+				8310B0211A022EB400ED8EB0 /* OMCAboutViewController.h */,
+				8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */,
 			);
 			name = "Other Panels";
 			sourceTree = "<group>";
@@ -495,12 +567,15 @@
 		83D5D51E19ADB3FC004AFD84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8316FF8F19ED4DDF007C5840 /* github.png */,
 				832A8C8319D90E0B005DB2A7 /* gnupg.png */,
 				832A8C7F19D90BCD005DB2A7 /* twitter.png */,
 				832A8C8019D90BCD005DB2A7 /* email.png */,
 				83ED014C19BC97FC004E7F9E /* logo.png */,
+				8310B01F1A022E7900ED8EB0 /* OMCAboutView.xib */,
+				8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */,
+				8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */,
 				832A8C8719D914CD005DB2A7 /* pubkey.txt */,
-				83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -561,6 +636,7 @@
 				83D5D4BD19ADB172004AFD84 /* Sources */,
 				83D5D4BE19ADB172004AFD84 /* Frameworks */,
 				83D5D4BF19ADB172004AFD84 /* Resources */,
+				8340B88B1A18DDDA0008DB3C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -636,17 +712,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8310B0191A0215F700ED8EB0 /* LICENSE.md in Resources */,
 				83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */,
 				83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */,
 				83DE176719DA9DC100D38667 /* xroot.png in Resources */,
 				839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */,
+				8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */,
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
+				8316FF9119ED4DDF007C5840 /* github.png in Resources */,
+				8310B01D1A0215F700ED8EB0 /* README.md in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
 				832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */,
 				832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */,
+				8310B0251A023BB200ED8EB0 /* OMCGeneralView.xib in Resources */,
 				832A8C8219D90BCD005DB2A7 /* email.png in Resources */,
-				83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */,
+				8310B01B1A0215F700ED8EB0 /* MASPreferencesWindow.xib in Resources */,
+				8310B0201A022E7900ED8EB0 /* OMCAboutView.xib in Resources */,
+				8310B0181A0215F700ED8EB0 /* .gitignore in Resources */,
+				8310B01A1A0215F700ED8EB0 /* MASPreferences.podspec in Resources */,
 				83ED014919BC9627004E7F9E /* OhMyCal.icns in Resources */,
 				832A24A619C4387E005E79A5 /* README.md in Resources */,
 				839396F919ADF459008D8A3C /* statusbar-logo.png in Resources */,
@@ -677,6 +761,8 @@
 				839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */,
 				83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */,
 				83099C9F19ADBB2E00DDBF1D /* BGHUDOutlineView.m in Sources */,
+				8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */,
+				8310B0281A023BCE00ED8EB0 /* OMCGeneralViewController.m in Sources */,
 				83099CA119ADBB2E00DDBF1D /* BGHUDProgressIndicator.m in Sources */,
 				839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */,
 				83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */,
@@ -697,7 +783,7 @@
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
-				83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */,
+				83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */,
 				83FD69A219C3753000B4488C /* OMCCalWithBasicStyle.m in Sources */,
 				83D5D4D119ADB172004AFD84 /* main.m in Sources */,
 				83099CAA19ADBB2E00DDBF1D /* BGHUDTableView.m in Sources */,
@@ -711,15 +797,16 @@
 				83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */,
 				83099CA919ADBB2E00DDBF1D /* BGHUDTableCornerView.m in Sources */,
 				83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */,
+				8310B01C1A0215F700ED8EB0 /* MASPreferencesWindowController.m in Sources */,
 				83099C9A19ADBB2E00DDBF1D /* BGHUDButtonCell.m in Sources */,
 				83099C9D19ADBB2E00DDBF1D /* BGHUDCommon.m in Sources */,
 				83099CAD19ADBB2E00DDBF1D /* BGHUDTabViewItem.m in Sources */,
 				83099CB019ADBB2E00DDBF1D /* BGHUDTokenFieldCell.m in Sources */,
+				8310B0231A022EB400ED8EB0 /* OMCAboutViewController.m in Sources */,
 				83099CA019ADBB2E00DDBF1D /* BGHUDPopUpButtonCell.m in Sources */,
 				83099CA619ADBB2E00DDBF1D /* BGHUDSegmentedCell.m in Sources */,
 				8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */,
 				83099C9C19ADBB2E00DDBF1D /* BGHUDComboBoxCell.m in Sources */,
-				83D5D54219ADB8FF004AFD84 /* OMFAboutPanelController.m in Sources */,
 				83099CAC19ADBB2E00DDBF1D /* BGHUDTabView.m in Sources */,
 				83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */,
 				83099C9819ADBB2E00DDBF1D /* BGGradientTheme.m in Sources */,
@@ -780,7 +867,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -818,7 +905,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -851,10 +938,48 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
 				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -867,10 +992,48 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
 				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

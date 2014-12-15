@@ -37,6 +37,8 @@
 
 NSString extern* const OMCDot;
 
+NSString extern* const OMCOperandPboardType;
+
 // Exception names
 NSString extern* const OMCOperandExactnessException;
 NSString extern* const OMCOperandOverflowException;
@@ -109,6 +111,26 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 + ( instancetype ) rand;
 
+- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
+
+#pragma mark Degit Operations
+- ( void ) appendDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary;
+
+- ( void ) deleteDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary;
+
+- ( BOOL ) isNaN;
+- ( BOOL ) isZero;
+- ( void ) zeroed;
+
+@end // OMCOperand class
+
+#pragma mark Unitary Operations
+@interface OMCOperand ( OMCOperand_UnitaryOperations )
+
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
 
@@ -175,44 +197,34 @@ NSString extern* const OMCOperandDivideByZeroException;
 /* Computes the inverse hyperbolic tangent of current value */
 - ( instancetype ) atanh;
 
-- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
+- ( instancetype ) RoL;
+- ( instancetype ) RoR;
 
-#pragma mark Degit Operations
-- ( void ) appendDigit: ( NSInteger )_Digit
-                 count: ( NSInteger )_Count
-                   ary: ( OMCAry )_Ary;
+- ( instancetype ) flipBytes;
 
-- ( void ) deleteDigit: ( NSInteger )_Digit
-                 count: ( NSInteger )_Count
-                   ary: ( OMCAry )_Ary;
+- ( instancetype ) factorial;
 
-- ( BOOL ) isZero;
-- ( void ) zeroed;
+@end // OMCOperand + OMCOperations
 
-#pragma mark Calculation
-- ( OMCOperand* ) add: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) subtract: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) multiply: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) divide: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) mod: ( OMCOperand* )_Rhs;
+#pragma mark Binary Operations
+@interface OMCOperand ( OMCOperand_BinaryOperations )
 
-- ( OMCOperand* ) factorial;
+- ( instancetype ) add: ( OMCOperand* )_Rhs;
+- ( instancetype ) subtract: ( OMCOperand* )_Rhs;
+- ( instancetype ) multiply: ( OMCOperand* )_Rhs;
+- ( instancetype ) divide: ( OMCOperand* )_Rhs;
+- ( instancetype ) mod: ( OMCOperand* )_Rhs;
 
-- ( OMCOperand* ) bitwiseAnd: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) bitwiseOr: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) bitwiseNor: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) bitwiseXor: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) Lsh: ( OMCOperand* )_Rhs;
-- ( OMCOperand* ) Rsh: ( OMCOperand* )_Rhs;
+- ( instancetype ) bitwiseAnd: ( OMCOperand* )_Rhs;
+- ( instancetype ) bitwiseOr: ( OMCOperand* )_Rhs;
+- ( instancetype ) bitwiseNor: ( OMCOperand* )_Rhs;
+- ( instancetype ) bitwiseXor: ( OMCOperand* )_Rhs;
+- ( instancetype ) Lsh: ( OMCOperand* )_Rhs;
+- ( instancetype ) Rsh: ( OMCOperand* )_Rhs;
 
-- ( OMCOperand* ) RoL;
-- ( OMCOperand* ) RoR;
+@end // OMCOperand + OMCOperand_BinaryOperations
 
-- ( OMCOperand* ) flipBytes;
-
-@end // OMCOperand class
-
-// OMCOperand + OMCDecimalNumberBehaviors
+#pragma mark Decimal Number Behaviors
 @interface OMCOperand ( OMCDecimalNumberBehaviors ) <NSDecimalNumberBehaviors>
 
 - ( short ) scale;
@@ -226,13 +238,35 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
-// NSDecimalNumberHandler + OMCOperand
+#pragma mark Pasteboard Support
+@interface OMCOperand ( OMCPasteboardSupport ) <NSCoding, NSPasteboardWriting, NSPasteboardReading>
+
+- ( id ) initWithCoder: ( NSCoder* )_Coder;
+- ( void ) encodeWithCoder: ( NSCoder* )_Coder;
+
+// Conforms <NSPasteboardWriting> protocol
+- ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard;
+- ( id ) pasteboardPropertyListForType: ( NSString* )_Type;
+
+// Conforms <NSPasteboardReading> protocol
++ ( NSArray* ) readableTypesForPasteboard: ( NSPasteboard* )_Pboard;
++ ( NSPasteboardReadingOptions ) readingOptionsForType: ( NSString* )_Type
+                                            pasteboard: ( NSPasteboard* )_Pboard;
+
+- ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard;
+
+@end // OMCOperand + OMCCodingBehaviors
+
+#pragma mark NSDecimalNumberHandler + OMCOperand
 @interface NSDecimalNumberHandler ( OMCOperand )
 
 + ( instancetype ) roundUpBehavior;
 + ( instancetype ) roundDownBehavior;
 
 @end // NSDecimalNumberHandler + OMCOperand
+
+#pragma mark Utility Functions
+NSUInteger OMCOperandConvertHexToDecimal( NSString* );
 
 //////////////////////////////////////////////////////////////////////////////
 

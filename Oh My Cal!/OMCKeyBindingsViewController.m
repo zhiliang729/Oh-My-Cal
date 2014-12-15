@@ -31,55 +31,41 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "OMCBinaryAndDecimalConversion.h"
+#import "OMCKeyBindingsViewController.h"
 
-// Notification names
-NSString extern* const OMCBinaryStringDidChanged;
+// OMCKeyBindingsViewController class
+@implementation OMCKeyBindingsViewController
 
-@class OMCProgrammerStyleCalculation;
-@class FBKVOController;
-
-// OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
++ ( instancetype ) keyBindingsViewController
     {
-@private
-    NSUInteger      _currentResultVal;
-    NSString*       _binaryInString;
-
-    NSArray*        _rectsTheTopLevelBitsOccupied;
-    NSArray*        _rectsTheBottomLevelBitsOccupied;
-
-    NSColor*        _bitColor;
-    NSFont*         _bitFont;
-
-    NSColor*        _anchorColor;
-    NSFont*         _anchorFont;
-
-    NSSize          _bitSize;
-    NSSize          _anchorSize;
+    return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
-@property ( nonatomic, retain ) FBKVOController* KVOController;
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"OMCKeyBindingsView" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
-@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
+    return self;
+    }
 
-@property ( nonatomic, assign ) NSUInteger currentResultVal;
-@property ( nonatomic, copy ) NSString* binaryInString;
+#pragma mark PreferencesViewController Behaviors
+- ( NSString* ) identifier
+    {
+    return @"OMCKeyBindingsView";
+    }
 
-@property ( nonatomic, copy ) NSArray* rectsTheTopLevelBitsOccupied;
-@property ( nonatomic, copy ) NSArray* rectsTheBottomLevelBitsOccupied;
+- ( NSImage* ) toolbarItemImage
+    {
+    return [ NSImage imageNamed: NSImageNameAdvanced ];
+    }
 
-@property ( nonatomic, retain ) NSColor* bitColor;
-@property ( nonatomic, retain ) NSFont* bitFont;
+- ( NSString* ) toolbarItemLabel
+    {
+    return NSLocalizedString( @"Key Bindings", @"Toolbar item name for the Key Bindings preference pane" );
+    }
 
-@property ( nonatomic, retain ) NSColor* anchorColor;
-@property ( nonatomic, retain ) NSFont* anchorFont;
-
-@property ( nonatomic, assign ) NSSize bitSize;
-@property ( nonatomic, assign ) NSSize anchorSize;
-
-@end // OMCBinaryOperationPanel class
+@end // OMCKeyBindingsViewController
 
 //////////////////////////////////////////////////////////////////////////////
 
